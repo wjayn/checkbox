@@ -18,15 +18,14 @@
     //全选按钮改变（也可用click事件）改变checked的值
     $('#all').change(function () {
         if ($(this).is(':checked')) {
-            $(this).attr('checked', true);
-            checks.attr('checked', true);
+            $(this).prop('checked', true);
+            checks.prop('checked', true);
             for (var i = 0; i < checks.length; i++) {
                 checkedList.push(checks[i].value)
-                console.log(checks[i])
             }
         } else {
-            $(this).attr('checked', false);
-            checks.attr('checked', false);
+            $(this).prop('checked', false);
+            checks.prop('checked', false);
             checkedList = [];
         }
     });
@@ -34,16 +33,16 @@
     //单个改变
     checks.change(function () {
         if ($(this).is(':checked')) {
-            $(this).attr('checked', true);
+            $(this).prop('checked', true);
             checkedList.push($(this).val());
             if (checkedList.length === checks.length) {
-                $('#all').attr('checked', true);
+                $('#all').prop('checked', true);
             }
         } else {
-            $(this).attr('checked', false);
+            $(this).prop('checked', false);
             var index = checkedList.indexOf($(this).val());
             checkedList.splice(index, 1);
-            $('#all').attr('checked', false);
+            $('#all').prop('checked', false);
         }
     });
 </script>
