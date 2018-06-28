@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script></head>
+<body>
+<input type="checkbox" class="check" value="checkbox0"/>checkbox0<br/>
+<input type="checkbox" class="check" value="checkbox1"/>checkbox1<br/>
+<input type="checkbox" class="check" value="checkbox2"/>checkbox2<br/>
+<input type="checkbox" class="check" value="checkbox3"/>checkbox3<br/>
+<input type="checkbox" class="check" value="checkbox4"/>checkbox4<br/>
+<input type="checkbox" id="all" value="all">全部
+</body>
+<script>
+    var checks = $('.check');
+    var checkedList = [];  // 用来存下所有选中元素的值
+    //全选按钮改变（也可用click事件）改变checked的值
+    $('#all').change(function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('checked', true);
+            checks.attr('checked', true);
+            for (var i = 0; i < checks.length; i++) {
+                checkedList.push(checks[i].value)
+                console.log(checks[i])
+            }
+        } else {
+            $(this).attr('checked', false);
+            checks.attr('checked', false);
+            checkedList = [];
+        }
+    });
+
+    //单个改变
+    checks.change(function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('checked', true);
+            checkedList.push($(this).val());
+            if (checkedList.length === checks.length) {
+                $('#all').attr('checked', true);
+            }
+        } else {
+            $(this).attr('checked', false);
+            var index = checkedList.indexOf($(this).val());
+            checkedList.splice(index, 1);
+            $('#all').attr('checked', false);
+        }
+    });
+</script>
+</html>
