@@ -32,5 +32,7 @@
 •对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。
 
 
-#### 这里$("#all").attr("checked") // undefined\<br> $("#all").attr("checked") // "checked" (不推荐使用)
+#### 这里$("#all").attr("checked") // undefined
+
+#### $("#all").attr("checked") // "checked" (不推荐使用)
 
